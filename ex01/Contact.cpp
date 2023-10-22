@@ -73,12 +73,27 @@ void    review_demand(std::string& demand, Contact& obj, PhoneBook& obj1)
   else if (demand == "SEARCH")
   {
     obj1.displayContacts();
-    int index;
-    std::cout << "\033[94m\033[1mEnter Index of your desire :\033[0m" << std::endl;
-    std::cin >> index;
-    if (std::cin.eof())
-      exit(0);
-    obj1.lookup_contact(index, obj);
+    long long index;
+    std::string input;
+      if (std::cin.eof())
+         exit(0);
+    std::getline(std::cin, input);
+    while (true){
+        std::cout << "Enter Index of your desire :";
+        if (!std::getline(std::cin, input))
+          break ;
+
+        if (!input.empty() && std::all_of(input.begin(), input.end(), ::isdigit)){
+            index = std::stoi(input);
+            if (index > INT_MAX || index <INT_MIN)
+              std::cout << "Out of range, Pleaze enter an integer !!" << std::endl;
+            else
+              obj1.lookup_contact(index, obj);
+            break ;
+        }  
+        else
+            std::cout << "Invalid input. Please enter an integer." << std::endl;
+    }
   }
   else if (demand == "EXIT")
     exit(0);

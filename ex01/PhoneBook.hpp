@@ -9,7 +9,7 @@ public:
     PhoneBook(int old_contact, int contactCout);
     void add_contact(const Contact& contact);
     void displayContacts() const;
-    void lookup_contact(int index, Contact& contact) const;
+    void lookup_contact(long long index, Contact& contact) const;
 
 private:
     static const int MAX_CONTACTS = 8;

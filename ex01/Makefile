@@ -5,7 +5,7 @@ OBJS = ${SRCS:.cpp=.o}
 
 CFLAGS = -Wall -Werror -Werror
 
-CC = g++
+CC = c++
 
 NAME  = phonebook
 
@@ -20,4 +20,4 @@ clean :
 fclean : clean
 	rm -rf ${NAME}
 
-re : fclean all
+re : fclean ${NAME}

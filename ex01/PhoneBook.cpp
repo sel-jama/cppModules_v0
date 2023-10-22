@@ -51,7 +51,7 @@ void PhoneBook::displayContacts() const {
     }
 }
 
-void PhoneBook::lookup_contact(int index, Contact& contact) const {
+void PhoneBook::lookup_contact(long long index, Contact& contact) const {
     if (index >= 0 && index < contactCount) {
         std::cout << "\033[94m----------- Contact info -----------\033[0m" << std::endl;
         std::cout << "     First Name : " << contacts[index].get_first_name() <<  std::endl;
