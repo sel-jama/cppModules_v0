@@ -16,29 +16,13 @@ class Contact
     public:
          void set_contact(const std::string& first, const std::string& last,
                         const std::string& nick, const std::string& phone,
-                        const std::string& secret)
-                        {
-                            first_name = first;
-                            last_name = last;
-                            nickname = nick;
-                            phone_number = phone;
-                            darkest_secret = secret;
-                        }
-        std::string get_first_name() const{
-            return (first_name);
-        }
-        std::string get_last_name() const{
-            return (last_name);
-        }
-        std::string get_nickname() const{
-            return (nickname);
-        }
-        std::string get_phone_number() const{
-            return (phone_number);
-        }
-        std::string get_secret() const{
-            return (darkest_secret);
-        }
+                        const std::string& secret);
+        std::string get_first_name() const;
+        std::string get_last_name() const;
+        std::string get_nickname() const;
+        std::string get_phone_number() const;
+        std::string get_secret() const;
+
 };
 
 #endif

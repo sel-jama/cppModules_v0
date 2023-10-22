@@ -2,6 +2,10 @@
 #include <iostream>
 #include <iomanip>
 
+PhoneBook::PhoneBook(){}
+
+PhoneBook::PhoneBook(int old, int count):old_contact(old), contactCount(count){}
+
 void    PhoneBook::add_contact(const Contact& contact)
 {
     if (contactCount < 8)
@@ -10,6 +14,7 @@ void    PhoneBook::add_contact(const Contact& contact)
         old_contact = 0;
     else
         old_contact += 1;
+	std::cout << old_contact << std::endl;
     contacts[old_contact] = contact;
     std::cout << "\033[92m\033[40mContact added successfully \U0001F44D\033[0m" << std::endl;
 }
@@ -19,7 +24,8 @@ void PhoneBook::displayContacts() const {
     std::cout << "\033[34m|     index|first name| last name|  nickname|\033[0m" <<std::endl;
     std::cout << "\033[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\033[0m" <<std::endl;
 
-    for (int i = 0; i < contactCount; ++i) {
+    int i = 0;
+    while (i < contactCount){
         std::string firstName = contacts[i].get_first_name();
         std::string lastName = contacts[i].get_last_name();
         std::string nickname = contacts[i].get_nickname();
@@ -33,23 +39,15 @@ void PhoneBook::displayContacts() const {
             nickname = nickname.substr(0, 9) + ".";
 
         std::cout << "\033[34m|     \033[0m" << i << "\033[34m    |\033[0m" ;
-        std::cout << firstName;
-        int len = firstName.length();
-        while (len++ < 10)
-            std::cout << " ";
+        std::cout << std::setw(10) << firstName;
         std::cout << "\033[34m|\033[0m";
-        std::cout << lastName;
-        len = lastName.length();
-        while (len++ < 10)
-            std::cout << " ";
+        std::cout << std::setw(10) << lastName;
         std::cout << "\033[34m|\033[0m";
-        std::cout << nickname;
-        len = nickname.length();
-        while (len++ < 10)
-            std::cout << " ";
+        std::cout << std::setw(10) << nickname;
         std::cout << "\033[34m|\033[0m";
         std::cout << std::endl;
         std::cout << "\033[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\033[0m" <<std::endl;
+        i++;
     }
 }
 

@@ -5,6 +5,8 @@
 
 class PhoneBook {
 public:
+    PhoneBook();
+    PhoneBook(int old_contact, int contactCout);
     void add_contact(const Contact& contact);
     void displayContacts() const;
     void lookup_contact(int index, Contact& contact) const;
@@ -12,8 +14,8 @@ public:
 private:
     static const int MAX_CONTACTS = 8;
     Contact contacts[MAX_CONTACTS];
-    int old_contact = -1;
-    int contactCount = 0;
+    int old_contact;
+    int contactCount;
 };
 
 #endif
