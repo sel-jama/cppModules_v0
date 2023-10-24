@@ -1,6 +1,4 @@
 #include "PhoneBook.hpp"
-#include <iostream>
-#include <iomanip>
 
 PhoneBook::PhoneBook(){}
 
@@ -20,9 +18,9 @@ void    PhoneBook::add_contact(const Contact& contact)
 }
 
 void PhoneBook::displayContacts() const {
-    std::cout << "\033[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\033[0m" <<std::endl;
-    std::cout << "\033[34m|     index|first name| last name|  nickname|\033[0m" <<std::endl;
-    std::cout << "\033[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\033[0m" <<std::endl;
+    std::cout << "\033[36m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\033[0m" <<std::endl;
+    std::cout << "\033[36m|     index|first name| last name|  nickname|\033[0m" <<std::endl;
+    std::cout << "\033[36m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\033[0m" <<std::endl;
 
     int i = 0;
     while (i < contactCount){
@@ -38,15 +36,11 @@ void PhoneBook::displayContacts() const {
         if (nickname.length() > 10)
             nickname = nickname.substr(0, 9) + ".";
 
-        std::cout << "\033[34m|     \033[0m" << i << "\033[34m    |\033[0m" ;
-        std::cout << std::setw(10) << firstName;
-        std::cout << "\033[34m|\033[0m";
-        std::cout << std::setw(10) << lastName;
-        std::cout << "\033[34m|\033[0m";
-        std::cout << std::setw(10) << nickname;
-        std::cout << "\033[34m|\033[0m";
-        std::cout << std::endl;
-        std::cout << "\033[34m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\033[0m" <<std::endl;
+        std::cout << "\033[36m|     \033[0m" << i << "\033[36m    |\033[0m" << std::setw(10) << firstName 
+            << "\033[36m|\033[0m" << std::setw(10) << lastName
+            << "\033[36m|\033[0m" << std::setw(10) << nickname
+            << "\033[36m|\033[0m" << std::endl;
+        std::cout << "\033[36m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\033[0m" << std::endl;
         i++;
     }
 }
@@ -64,5 +58,3 @@ void PhoneBook::lookup_contact(long long index, Contact& contact) const {
     else
         std::cout << "\033[97m\033[41mContact not found!\033[0m" << std::endl;
 }
-
-
