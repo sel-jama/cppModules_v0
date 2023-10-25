@@ -39,6 +39,16 @@ void	validateLine(std::string& input)
 	}
 }
 
+int	is_digit(const std::string input){
+	int	i = 0;
+	while(input[i]){
+		if (!std::isdigit(input[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 void	review_demand(std::string& demand, Contact& obj, PhoneBook& obj1)
 {
 	if (demand == "ADD")
@@ -71,7 +81,7 @@ void	review_demand(std::string& demand, Contact& obj, PhoneBook& obj1)
 			std::cout << "Enter Index of your desire :";
 			if (!std::getline(std::cin, input))
 				break ;
-			if (!input.empty() && std::all_of(input.begin(), input.end(), ::isdigit) && input.length() < 12){
+			if (!input.empty() && is_digit(input) && input.length() < 12){
 				index = std::stoll(input);
 				if (index > INT_MAX || index < INT_MIN){
 					std::cout << "Out of range. Please enter an integer." << std::endl;

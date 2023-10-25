@@ -12,8 +12,7 @@ public:
     void lookup_contact(long long index, Contact& contact) const;
 
 private:
-    static const int MAX_CONTACTS = 8;
-    Contact contacts[MAX_CONTACTS];
+    Contact contacts[8];
     int old_contact;
     int contactCount;
 };
