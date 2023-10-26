@@ -93,8 +93,8 @@ void	review_demand(std::string& demand, Contact& obj, PhoneBook& obj1)
 				break ;
 			if (!input.empty() && is_digit(input) && input.length() < 12){
 				index = std::stoll(input);
-				if (index > INT_MAX || index < INT_MIN){
-					std::cout << "Out of range. Please enter an integer." << std::endl;
+				if (index > INT_MAX || index < 0){
+					std::cout << "OUT OF RANGE!! Please enter a positive integer .." << std::endl;
 					continue ;
 				}
 				obj1.lookup_contact(index, obj);

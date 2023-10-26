@@ -12,7 +12,7 @@ void    PhoneBook::add_contact(const Contact& contact)
         old_contact = 0;
     else
         old_contact += 1;
-	std::cout << old_contact << std::endl;
+    
     contacts[old_contact] = contact;
     std::cout << "\033[92m\033[40mContact added successfully\033[0m" << std::endl;
 }
