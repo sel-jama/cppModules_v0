@@ -14,7 +14,7 @@ void    PhoneBook::add_contact(const Contact& contact)
         old_contact += 1;
 	std::cout << old_contact << std::endl;
     contacts[old_contact] = contact;
-    std::cout << "\033[92m\033[40mContact added successfully \U0001F44D\033[0m" << std::endl;
+    std::cout << "\033[92m\033[40mContact added successfully\033[0m" << std::endl;
 }
 
 void PhoneBook::displayContacts() const {
@@ -46,6 +46,7 @@ void PhoneBook::displayContacts() const {
 }
 
 void PhoneBook::lookup_contact(long long index, Contact& contact) const {
+
     if (index >= 0 && index < contactCount) {
         std::cout << "\033[94m----------- Contact info -----------\033[0m" << std::endl;
         std::cout << "     First Name : " << contacts[index].get_first_name() <<  std::endl;
@@ -56,5 +57,6 @@ void PhoneBook::lookup_contact(long long index, Contact& contact) const {
         std::cout << "\033[94m------------------------------------\033[0m" << std::endl;
     }
     else
-        std::cout << "\033[97m\033[41mContact not found!\033[0m" << std::endl;
+        std::cout << "CONTACT NOT FOUND!" << std::endl;
+
 }

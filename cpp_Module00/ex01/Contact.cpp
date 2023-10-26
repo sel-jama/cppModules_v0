@@ -1,28 +1,47 @@
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
+#include <climits>
 
-int	checkInput(std::string& input){
+int	is_digit(const std::string input){
+	int	i = 0;
+	while (input[i] && isspace(input[i]))
+		i++;
+	if (input[i] == '+' || input[i] == '-')
+		i++;
+	while(input[i]){
+		if (!std::isdigit(input[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	checkInput(const std::string& input, int num){
   int	i;
+  
+  	i = 0;
+  	if (std::cin.eof())
+  	{
+    	std::cout << std::endl;
+      	exit(0);
+  	}
 
-  i = 0;
-  if (std::cin.eof())
-  {
-      std::cout << std::endl;
-      exit(0);
-  }
-   while (input[i] && (input[i] == '\r' || input[i] == ' ' || input[i] == '\t'))
+	if (num && !is_digit(input))
+		return (1);
+
+	while (input[i] && std::isspace(input[i]))
       i++;
     if (!input[i] || input[i] == '\n')
       return (1);
     return (0);
 }
 
-void	validateLine(std::string& input)
+void	validateLine(std::string& input, int num)
 {
 	while (true)
 	{
 		std::getline(std::cin, input);
-		if (checkInput(input))
+		if (checkInput(input, num))
 		{
 			std:: cout << "\033[96m>\033[0m" ;
 			continue ;
@@ -39,15 +58,6 @@ void	validateLine(std::string& input)
 	}
 }
 
-int	is_digit(const std::string input){
-	int	i = 0;
-	while(input[i]){
-		if (!std::isdigit(input[i]))
-			return (0);
-		i++;
-	}
-	return (1);
-}
 
 void	review_demand(std::string& demand, Contact& obj, PhoneBook& obj1)
 {
@@ -56,15 +66,15 @@ void	review_demand(std::string& demand, Contact& obj, PhoneBook& obj1)
 		std::string first, last, nick_name, phone, secret;
 
 		std::cout << "\033[96m\033[1mFirst Name: \033[0m" << std::endl << "\033[96m>\033[0m";
-		validateLine(first);
+		validateLine(first, 0);
 		std::cout << "\033[96m\033[1mLast Name: \033[0m" << std::endl << "\033[96m>\033[0m";
-		validateLine(last);
+		validateLine(last, 0);
 		std::cout << "\033[96m\033[1mNickname: \033[0m" << std::endl << "\033[96m>\033[0m";
-		validateLine(nick_name);
+		validateLine(nick_name, 0);
 		std::cout << "\033[96m\033[1mPhone Number: \033[0m" << std::endl << "\033[96m>\033[0m";
-		validateLine(phone);
+		validateLine(phone, 1);
 		std::cout << "\033[96m\033[1mDarkest Secret: \033[0m" << std::endl<< "\033[96m>\033[0m";
-		validateLine(secret);
+		validateLine(secret, 0);
 		obj.set_contact(first, last, nick_name, phone, secret);
 		obj1.add_contact(obj);
 	} 
@@ -97,7 +107,7 @@ void	review_demand(std::string& demand, Contact& obj, PhoneBook& obj1)
   else if (demand == "EXIT")
 	  exit(0);
   else
-	  std::cerr << "Input discarded.. Pleaze enter ADD, SEARCH or EXIT \U0001F60A"<< std::endl;
+	  std::cerr << "Input discarded.. Pleaze enter ADD, SEARCH or EXIT "<< std::endl;
 }
 
 void	Contact::set_contact(const std::string& first, const std::string& last,
@@ -138,7 +148,7 @@ int main()
 	PhoneBook obj1(-1, 0);
 	while (1)
 	{
-		std::cout << "\033[32mEnter your service -> \033[0m";
+		std::cout << "Enter your service -> ";
 		getline(std::cin, service);
 		if (std::cin.eof())
 		{
