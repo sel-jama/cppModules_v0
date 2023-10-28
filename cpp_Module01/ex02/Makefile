@@ -5,14 +5,14 @@ OBJ = ${SRC:.cpp=.o}
 
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = brain
 
 all : ${NAME}
 
 ${NAME}: ${OBJ}
-	${CC} ${CFLAGS} ${OBJ} -o ${NAME}
+	${CC} ${CPPFLAGS} ${OBJ} -o ${NAME}
 
 clean:
 	rm -rf ${OBJ}

@@ -1,19 +1,25 @@
 
 SRC = main.cpp Replace.cpp
 
-OBJ = main.o Replace.o
+OBJ = ${SRC:.cpp=.o}
 
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-all : ${OBJ}
-	${CC} ${CFLAGS} ${OBJ}
+HEADERS = Replace.hpp
+
+NAME = replace
+
+all : ${NAME}
+
+${NAME} : ${OBJ} ${HEADERS}
+	${CC} ${CPPFLAGS} ${OBJ} -o ${NAME}
 
 clean:
 	rm -rf ${OBJ}
 
 fclean: clean
-	rm -rf a.out
+	rm -rf ${NAME}
 
 re: fclean all

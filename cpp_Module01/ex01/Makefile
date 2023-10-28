@@ -3,16 +3,18 @@ SRCS = zombieHorde.cpp Zombie.cpp main.cpp
 
 OBJS = ${SRCS:.cpp=.o}
 
-CFLAGS = -Wall -Wextra -Werror
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 CC = c++
 
 NAME = Horde
 
+HEADERS = Zombie.hpp
+
 all: ${NAME}
 
-${NAME}: ${OBJS}
-	${CC} ${CFLAGS} ${OBJS} -o ${NAME}
+${NAME}: ${OBJS} ${HEADERS}
+	${CC} ${CPPFLAGS} ${OBJS} -o ${NAME}
 
 clean:
 	rm -rf ${OBJS}
