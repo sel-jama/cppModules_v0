@@ -18,13 +18,13 @@ int main()
 {
         std::cout << "Zombies having brain snack ..in the stack\n" << std::endl;
 
-        Zombie zombie; //constructor is called 
-        zombie.randomChump("Random");
+        // Zombie zombie; //constructor is called 
+        randomChump("Random");
 
         std::cout << std::endl ;
         std::cout << "Zombies of the heap graveyard\n" << std::endl;
 
-        Zombie* z1 = zombie.newZombie("Fatima");
+        Zombie* z1 = newZombie("Fatima");
         z1->announce();
         delete z1; // Release memory for z1
 

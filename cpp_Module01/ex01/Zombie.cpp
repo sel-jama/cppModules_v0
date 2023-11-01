@@ -12,10 +12,14 @@
 
 #include "Zombie.hpp"
 
+Zombie::Zombie(){}
+
 Zombie::Zombie(std::string Name):name(Name){
 }
 
-Zombie::~Zombie(){}
+Zombie::~Zombie(){
+    std::cout << "The zombie  -" << name <<"- has fallen "  << std::endl;
+}
 
 void Zombie::announce(void)
 {

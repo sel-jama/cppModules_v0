@@ -6,11 +6,11 @@ Zombie::Zombie(){}
 Zombie::Zombie(std::string Name):name(Name)
 {
     // name = Name;
-    std::cout << "Zombie " << Name << " has risen " << "\U0001F9DF\u200D" << std::endl;
+    std::cout << "Zombie " << Name << " has risen " << std::endl;
 }
 
 Zombie::~Zombie(){
-    std::cout << "The zombie  -" << name <<"- has fallen " << "\U0001F480" << std::endl;
+    std::cout << "The zombie  -" << name <<"- has fallen " << std::endl;
 }
 
 void Zombie::announce(void)
