@@ -5,7 +5,6 @@ Zombie::Zombie(){}
 
 Zombie::Zombie(std::string Name):name(Name)
 {
-    // name = Name;
     std::cout << "Zombie " << Name << " has risen " << std::endl;
 }
 
