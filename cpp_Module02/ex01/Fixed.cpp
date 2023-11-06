@@ -5,7 +5,15 @@ Fixed::Fixed(){
 }
 
 Fixed::Fixed(const int i){
-    //It converts it i to the corresponding fixed-point value
+    //It converts i to the corresponding fixed-point value
+    std::cout << "Int constructor is called" << std::endl;
+    value = i << f_bits;
+    std::cout << "as fixed is " << value << std::endl;
+}
+
+Fixed::Fixed(const float f){
+    std::cout << "Float constructor is called" << std::endl;
+    value = f / 256;
 }
 
 Fixed::Fixed(const Fixed& oldObj){
@@ -38,13 +46,22 @@ void Fixed::setRawBits(int const raw)
 
 float Fixed::toFloat( void ) const{
     //converts the fixed-point value to a floating-point value
+    return value >> f_bits;
 }
 
 int Fixed::toInt( void ) const{
-    //converts the fixed-point value to an integer value
-    return value;
+    //converts the fixed-point value to an integer value    
+    return (value >> f_bits);
 }
 
-// void operator<<(const ostream& cout){
-    
+// const std::ofstream& operator<<(const std::ofstream& cout, Fixed obj){
+//     cout << obj.toFloat();
+//     return cout;
+// }
+
+
+// std::ofstream &operator<<(std::ofstream &os, Fixed f)
+// {
+//     os << f.toFloat();
+//     return os;
 // }

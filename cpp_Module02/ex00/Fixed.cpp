@@ -7,7 +7,7 @@ Fixed::Fixed(){
 
 Fixed::Fixed(const Fixed& oldObj){
     std::cout << "Copy constructor called" << std::endl;
-    value = oldObj.value;
+    value = oldObj.getRawBits();
 }
 
 
@@ -16,7 +16,7 @@ Fixed& Fixed::operator=(const Fixed& oldObj){
     if (&oldObj == this)
         return *this;
 
-    value = oldObj.value;
+    value = oldObj.getRawBits();
     return *this;
 }
 
