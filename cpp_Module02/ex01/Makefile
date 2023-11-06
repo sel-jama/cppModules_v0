@@ -7,11 +7,13 @@ CC = c++
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
+HEADERS = Fixed.hpp
+
 NAME = Fixed
 
 all : ${NAME}
 
-${NAME} : ${OBJS}
+${NAME} : ${OBJS} ${HEADERS}
 	${CC} ${CPPFLAGS} ${OBJS} -o ${NAME}
 
 clean :

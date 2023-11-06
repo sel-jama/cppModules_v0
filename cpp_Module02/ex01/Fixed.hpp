@@ -20,7 +20,8 @@ class Fixed{
         void setRawBits( int const raw);
         float toFloat( void ) const;
         int toInt( void ) const;
+        void print(const std::ostream& os) const;
 };
-// const std::ofstream& operator<<(const std::ofstream& cout, Fixed obj);
+std::ostream& operator<<(const std::ostream& os, Fixed& obj);
 
 #endif

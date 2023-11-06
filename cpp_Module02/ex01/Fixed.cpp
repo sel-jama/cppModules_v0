@@ -13,7 +13,7 @@ Fixed::Fixed(const int i){
 
 Fixed::Fixed(const float f){
     std::cout << "Float constructor is called" << std::endl;
-    value = f / 256;
+    value = roundf(f) / 256;
 }
 
 Fixed::Fixed(const Fixed& oldObj){
@@ -39,14 +39,13 @@ int Fixed::getRawBits(void) const{
     return value;
 }
 
-void Fixed::setRawBits(int const raw)
-{
+void Fixed::setRawBits(int const raw){
     value = raw;
 }
 
 float Fixed::toFloat( void ) const{
     //converts the fixed-point value to a floating-point value
-    return value >> f_bits;
+    return value * 256;
 }
 
 int Fixed::toInt( void ) const{
@@ -54,11 +53,14 @@ int Fixed::toInt( void ) const{
     return (value >> f_bits);
 }
 
-// const std::ofstream& operator<<(const std::ofstream& cout, Fixed obj){
-//     cout << obj.toFloat();
-//     return cout;
-// }
+void print(const std::ostream& os) const{
+    os << this->toFloat();
+}
 
+std::ostream& operator<<(const std::ostream& os, Fixed& obj){
+    obj.print(os);
+    return os;
+}
 
 // std::ofstream &operator<<(std::ofstream &os, Fixed f)
 // {
