@@ -9,17 +9,16 @@ Fixed::Fixed(const int i){
     //It converts i to the corresponding fixed-point value
     std::cout << "Int constructor is called" << std::endl;
     this->value = i << f_bits;
-    std::cout << "as fixed is " << value << std::endl;
 }
 
 Fixed::Fixed(const float f){
     std::cout << "Float constructor is called" << std::endl;
-    // value = roundf(f) / 256;
-    this->value = (int)roundf(val * (1 << f_bits));
+    // value = roundf(f * 256);
+    this->value = (int)roundf(f * (1 << f_bits));
 }
 
 Fixed::Fixed(const Fixed& oldObj){
-    std::cout << "Copb constructor called" << std::endl;
+    std::cout << "Copy constructor called" << std::endl;
     // value = oldObj.value;
     *this = oldObj;
 }
@@ -29,7 +28,7 @@ Fixed& Fixed::operator=(const Fixed &oldObj){
     if (this == &oldObj)
         return *this;
     
-    value = oldObj.value;
+    value = oldObj.getRawBits();
     return *this;
 }
 
@@ -38,7 +37,6 @@ Fixed::~Fixed(){
 }
 
 int Fixed::getRawBits(void) const{
-    std::cout << "getRawBits member function called" << std::endl;
     return value;
 }
 
@@ -56,17 +54,8 @@ int Fixed::toInt( void ) const{
     return (value >> f_bits);
 }
 
-void print(const std::ostream& os) const{
-    os << this->toFloat();
+std::ostream& operator<<(std::ostream& stream,const Fixed& obj){
+    stream << obj.toFloat();
+    return stream;
 }
 
-std::ostream& operator<<(const std::ostream& os, Fixed& obj){
-    obj.print(os);
-    return os;
-}
-
-// std::ofstream &operator<<(std::ofstream &os, Fixed f)
-// {
-//     os << f.toFloat();
-//     return os;
-// }
