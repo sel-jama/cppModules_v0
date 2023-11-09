@@ -1,5 +1,7 @@
 #include "Fixed.hpp"
 
+const int f_bits = 8;
+
 Fixed::Fixed(){
     std::cout << "Default constructor is called" << std::endl;
     this->value = 0;
@@ -14,13 +16,13 @@ Fixed::Fixed(const int i){
 Fixed::Fixed(const float f){
     std::cout << "Float constructor is called" << std::endl;
     // value = roundf(f * 256);
-    this->value = (int)roundf(f * (1 << f_bits));
+    this->value = roundf(f * (1 << f_bits));
 }
 
 Fixed::Fixed(const Fixed& oldObj){
     std::cout << "Copy constructor called" << std::endl;
     // value = oldObj.value;
-    *this = oldObj;
+    value = oldObj.getRawBits();
 }
 
 Fixed& Fixed::operator=(const Fixed &oldObj){

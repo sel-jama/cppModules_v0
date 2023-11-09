@@ -9,7 +9,7 @@ class Fixed
 {
     private:
         int value;
-        static const int f_bits = 8;
+        static const int f_bits;
 
     public:
         Fixed ();
@@ -22,10 +22,17 @@ class Fixed
         void setRawBits(int const raw);
         float toFloat( void ) const;
 
-        Fixed& operator*(const Fixed& operand);
-        Fixed& operator/(const Fixed& operand);
-        Fixed& operator+(const Fixed& operand);
-        Fixed& operator-(const Fixed& operand);
+        bool operator>(const Fixed& other) const;
+        bool operator<(const Fixed& other) const;
+        bool operator<=(const Fixed& other) const;
+        bool operator>=(const Fixed& other) const;
+        bool operator==(const Fixed& other) const;
+        bool operator!=(const Fixed& other) const;
+
+        Fixed operator*(const Fixed& operand) const;
+        Fixed operator/(const Fixed& operand) const;
+        Fixed operator+(const Fixed& operand) const;
+        Fixed operator-(const Fixed& operand) const;
 
         Fixed& operator++();  //pre-increment 
         Fixed operator++(int);  //post-increment
@@ -33,10 +40,10 @@ class Fixed
         Fixed operator--(int); //post-decrement
 
         static Fixed& max(Fixed & a, Fixed & b);
-        static const Fixed& max(Fixed const& a, Fixed const& b);
+        static const Fixed& max(const Fixed& a, const Fixed& b);
 
         static Fixed& min(Fixed& a, Fixed& b);
-        static const Fixed& min(Fixed const& a, Fixed const& b);
+        static const Fixed& min(const Fixed& a, const Fixed& b);
 
 };
 

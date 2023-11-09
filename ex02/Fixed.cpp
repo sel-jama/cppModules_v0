@@ -1,5 +1,7 @@
 #include "Fixed.hpp"
 
+const int f_bits = 8;
+
 Fixed::Fixed(){
     this->value = 0;
 }
@@ -9,7 +11,7 @@ Fixed::Fixed(const int i){
 }
 
 Fixed::Fixed(const float f){
-    this->value = (int)roundf(f * (1 << f_bits));
+   this->value = roundf(f * (1 << f_bits));
 }
 
 Fixed::Fixed(const Fixed& old){
@@ -45,33 +47,64 @@ std::ostream& operator<<(std::ostream& stream,const Fixed& obj){
 
 //Comparison operators overloading
 
+bool	Fixed::operator>(const Fixed& other) const{
+	return (this->value > other.value);
+}
+
+bool	Fixed::operator<(const Fixed& other) const{
+	return (this->value < other.value);
+}
+
+bool	Fixed::operator>=(const Fixed& other) const
+{
+	return (this->value >= other.value);
+}
+
+bool	Fixed::operator<=(const Fixed& other) const
+{
+	return (this->value <= other.value);
+}
+
+bool	Fixed::operator==(const Fixed& other) const
+{
+	return (this->value == other.value);
+}
+
+bool	Fixed::operator!=(const Fixed& other) const
+{
+	return (this->value != other.value);
+}
 
 //Arithmetic operators overloading
 
-Fixed& Fixed::operator*(const Fixed& operand){
-   this->value *= operand.value / 256;
-   return (*this);
+Fixed Fixed::operator*(const Fixed& operand) const{
+    Fixed ret;
+    ret.value = this->value * operand.value / 256;
+   return (ret);
 }
 
-Fixed& Fixed::operator/(const Fixed& operand){
-    this->value /= operand.value * 256;
-    return (*this);
+Fixed Fixed::operator/(const Fixed& operand) const{
+    Fixed res;
+    res.value = (this->value * 256 ) / operand.getRawBits();
+    return (res);
 }
 
-Fixed& Fixed::operator+(const Fixed& operand){
-    this->value += operand.value;
-    return (*this);
+Fixed Fixed::operator+(const Fixed& operand) const{
+    Fixed res;
+    res.value = this->value + operand.value;
+    return res;
 }
 
-Fixed& Fixed::operator-(const Fixed& operand){
-    this->value -= operand.value;
-    return (*this);
+Fixed Fixed::operator-(const Fixed& operand) const{
+    Fixed res;
+    res.value = this->value - operand.value;
+    return (res);
 }
 
 //Increment/Decrement operators overloading
 
 Fixed& Fixed::operator++(){
-    ++value;
+    value += 1;
     return (*this);
 }
 
@@ -80,29 +113,40 @@ Fixed Fixed::operator++(int){
     ++value;
     return (saver);
 }
- 
+
+Fixed& Fixed::operator--(){
+    --value;
+    return (*this);
+}
+
+Fixed Fixed::operator--(int){
+    Fixed saver = *this;
+    --value;
+    return (saver);
+}
+
 //overloaded function
 
 Fixed& Fixed::max(Fixed & a, Fixed & b){
-    if (a.getRawBits() > b.getRawBits())
+    if (a > b)
         return (a);
     return (b); 
 }
 
-const Fixed& Fixed::max(Fixed const& a, Fixed const& b){
-    if (a.getRawBits() > b.getRawBits())
+const Fixed& Fixed::max(const Fixed& a, const Fixed& b){
+    if (a > b)
         return (a);
     return (b); 
 }
 
 Fixed& Fixed::min(Fixed &a, Fixed& b){
-    if (a.getRawBits() < b.getRawBits())
+    if (a < b)
         return (a);
     return (b);
 }
 
-const Fixed& Fixed::min(Fixed const& a, Fixed const& b){
-    if (a.getRawBits() < b.getRawBits())
+const Fixed& Fixed::min(const Fixed& a, const Fixed& b){
+    if (a < b)
         return (a);
     return (b); 
 }
