@@ -5,18 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 00:38:19 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/11/10 01:22:05 by sel-jama         ###   ########.fr       */
+/*   Created: 2023/11/10 01:11:50 by sel-jama          #+#    #+#             */
+/*   Updated: 2023/11/10 02:02:03 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
-int main(){
-    ClapTrap obj;
-    ClapTrap obj1("robot");
+int main()
+{
+    ScavTrap  child;
+    child.attack("target");
     
-    obj.attack("Me");
-    obj1.attack("another");
+    std::cout << std::endl;
+    ScavTrap  name("Serena");
+    name.attack("another");
+    name.guardGate();
+    std::cout << std::endl;
     return 0;
 }

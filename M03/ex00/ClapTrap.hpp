@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 23:28:45 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/11/09 00:22:18 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/11/09 20:13:38 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class ClapTrap{
     
     public:
         ClapTrap();
-        ClapTrap(std::string Name);
+        ClapTrap(const std::string Name);
         ClapTrap(const ClapTrap& other);
         ClapTrap& operator=(const ClapTrap& other);
         ~ClapTrap();

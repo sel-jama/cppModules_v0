@@ -1,6 +1,5 @@
 #include "Fixed.hpp"
 
-const int f_bits = 8;
 
 Fixed::Fixed(){
     this->value = 0;
@@ -79,7 +78,7 @@ bool	Fixed::operator!=(const Fixed& other) const
 
 Fixed Fixed::operator*(const Fixed& operand) const{
     Fixed ret;
-    ret.value = this->value * operand.value / 256;
+    ret.value = this->value * operand.value >> f_bits;
    return (ret);
 }
 
