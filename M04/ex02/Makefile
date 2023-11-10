@@ -1,5 +1,4 @@
-
-SRCS = main.cpp Fixed.cpp
+SRCS = main.cpp Cat.cpp Dog.cpp Animal.cpp Brain.cpp
 
 OBJS = ${SRCS:.cpp=.o}
 
@@ -7,9 +6,9 @@ CC = c++
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = Fixed
+HEADERS = Animal.hpp Cat.hpp Dog.hpp Brain.hpp
 
-HEADERS = Fixed.hpp
+NAME = Animal
 
 all : ${NAME}
 
