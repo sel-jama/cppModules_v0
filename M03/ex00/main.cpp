@@ -14,9 +14,13 @@
 
 int main(){
     ClapTrap obj;
-    ClapTrap obj1("robot");
     
-    obj.attack("Me");
+    obj.setName("CLAP1");
+    obj.attack("CLAP2");
+    obj.takeDamage(3);
+    obj.beRepaired(2);
+
+    ClapTrap obj1( obj );
     obj1.attack("another");
     return 0;
 }

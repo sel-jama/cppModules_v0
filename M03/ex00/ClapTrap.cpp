@@ -13,54 +13,70 @@
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap():HitPt(10), EnergyPt(10), AttackDmg(0){
-    std::cout << "Default constructor called" << std::endl;
+    std::cout << "Default constructor called ." << std::endl;
 }
 
-ClapTrap::ClapTrap(const std::string Name):name(Name){}
+ClapTrap::ClapTrap(const std::string Name):name(Name){
+    HitPt = 10;
+    EnergyPt = 10;
+    AttackDmg = 0;
+}
 
 ClapTrap::ClapTrap(const ClapTrap& other){
-    // name = other.name;
-    // HitPt = other.HitPt;
-    // EnergyPt = other.EnergyPt;
-    // AttackDmg = other.AttackDmg;
+    std::cout << "Copy Constructor Called ." << std::endl;
     *this = other;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& other){
-    if (this == &other)
-        return *this;
-    
-    // name = other.name;
-    // HitPt = other.HitPt;
-    // EnergyPt = other.EnergyPt;
-    // AttackDmg = other.AttackDmg;
-    *this = other;
+    std::cout << "Copy assignment operator called ." << std::endl;
+    if (this != &other)
+    {
+        name = other.name;
+        HitPt = other.HitPt;
+        EnergyPt = other.EnergyPt;
+        AttackDmg = other.AttackDmg;
+    }
     return *this;
 }
 
 void ClapTrap::attack(const std::string& target){
     if (HitPt <= 0 || EnergyPt <= 0)
+    {
+        std::cout << "ClapTrap" << this->getName() << "can not attack" << std::endl;
         return ;
-    takeDamage(HitPt);
-    HitPt -= AttackDmg;
+    }
     EnergyPt -= 1;
-    std::cout << "ClapTrap " << name << " attacks " << target << ", causing " << AttackDmg << " points of damage!" << std::endl;
+    std::cout << "ClapTrap " << this->getName() << " attacks " << target << ", causing " << AttackDmg << " points of damage!" << std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount){
     if (HitPt <= 0 || EnergyPt <= 0)
+    {
+        std::cout << "ClapTrap" << this->getName() << "can not be repaired" << std::endl;
         return ;
+    }
     HitPt += amount;
     EnergyPt -= 1;
 }
 
 void ClapTrap::takeDamage(unsigned int amount){
     if (HitPt <= 0 || EnergyPt <= 0)
+    {
+        std::cout << "ClapTrap can not handle damage anymore" << std::endl;
         return ;
-    ++AttackDmg;
-    beRepaired(amount);
+    }
+    HitPt -= amount;
+    AttackDmg += amount;
 }
 
+
+const std::string& ClapTrap::getName() const{
+    return (this->name);
+}
+
+void ClapTrap::setName(const std::string Name){
+    this->name = Name;
+}
 
 ClapTrap::~ClapTrap(){
     std::cout << "Destructor called" << std::endl;
