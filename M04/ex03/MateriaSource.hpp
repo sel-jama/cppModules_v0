@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Character.cpp                                      :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 05:13:49 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/11/13 12:27:20 by sel-jama         ###   ########.fr       */
+/*   Created: 2023/11/13 12:32:53 by sel-jama          #+#    #+#             */
+/*   Updated: 2023/11/13 12:35:45 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Character.hpp"
+#ifndef MATERIASOURCE_HPP
+#define MATERIASOURCE_HPP
 
-Character::Character(){}
+#include "IMateriaSource.hpp"
 
-Character::Character(const std::string& name):_name(name){}
-
-Character::Character(const Character& other){
-    *this = other;
+class MateriaSource : public IMateriaSource{
+    public:
+        MateriaSource(){}
+        void learnMateria(AMateria*);
+        AMateria* createMateria(std::string const & type);
 }
 
-Character& Character::operator=(const Character& other){
-    if (this != &other)
-    {
-        this->_name = other._name;
-    }
-    return *this;
-}
-
-Character::~Character(){}
+#endif

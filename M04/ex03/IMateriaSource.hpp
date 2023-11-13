@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Character.cpp                                      :+:      :+:    :+:   */
+/*   IMateriaSource.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 05:13:49 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/11/13 12:27:20 by sel-jama         ###   ########.fr       */
+/*   Created: 2023/11/13 12:29:44 by sel-jama          #+#    #+#             */
+/*   Updated: 2023/11/13 12:31:11 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Character.hpp"
+#ifndef IMATERIASOURCE_HPP
+#define IMATERIASOURCE_HPP
 
-Character::Character(){}
+#include "AMateria.hpp"
 
-Character::Character(const std::string& name):_name(name){}
+class IMateriaSource
+{
+    public:
+        virtual ~IMateriaSource() {}
+        virtual void learnMateria(AMateria*) = 0;
+        virtual AMateria* createMateria(std::string const & type) = 0;
+};
 
-Character::Character(const Character& other){
-    *this = other;
-}
-
-Character& Character::operator=(const Character& other){
-    if (this != &other)
-    {
-        this->_name = other._name;
-    }
-    return *this;
-}
-
-Character::~Character(){}
+#endif
