@@ -15,11 +15,16 @@
 int main()
 {
     ScavTrap  child;
+  
     child.attack("target");
+    child.takeDamage(100);
+    child.attack("someone");
     
     std::cout << std::endl;
     ScavTrap  name("Serena");
     name.attack("another");
+    name.takeDamage(50);
+    name.beRepaired(20);
     name.guardGate();
     std::cout << std::endl;
     return 0;

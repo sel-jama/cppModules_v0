@@ -12,15 +12,19 @@
 
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(){
+FragTrap::FragTrap() : ClapTrap(){
+    std::cout << "FragTrap Default Constructor Called" << std::endl;
     HitPt = 100;
     EnergyPt = 100;
     AttackDmg = 30;
-    std::cout << "FragTrap Default Constructor Called" << std::endl;
 }
 
-FragTrap::FragTrap(const std::string Name){
+FragTrap::FragTrap(const std::string Name) : ClapTrap(Name) {
+    std::cout << "FragTrap Parameterized Constructor Called" << std::endl;
     name = Name;
+    HitPt = 100;
+    EnergyPt = 100;
+    AttackDmg = 30;
 }
 
 FragTrap::~FragTrap(){
@@ -28,9 +32,15 @@ FragTrap::~FragTrap(){
 }
 
 void FragTrap::attack(const std::string& target){
-        std::cout << "FragTrap " << name << " attacks " << target << ", causing " << AttackDmg << " points of damage!" << std::endl;
+    if (this->HitPt <= 0 || this->EnergyPt <= 0)
+    {
+        std::cout << "FragTrap " << this->getName() << " is unable to attack" << std::endl;
+        return ;
+    }
+    this->EnergyPt -= 1;
+    std::cout << "FragTrap " << this->getName() << " attacks " << target << ", causing " << AttackDmg << " points of damage!" << std::endl;
 }
 
 void FragTrap::highFivesGuys(void){
-    std::cout << "High Five Guuuys" << std::endl;
+    std::cout << "FragTrap " << this->getName()  << " : High Five Guuuys" << std::endl;
 }

@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.cpp                                       :+:      :+:    :+:   */
+/*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 05:32:05 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/11/10 05:54:08 by sel-jama         ###   ########.fr       */
+/*   Created: 2023/11/13 04:03:35 by sel-jama          #+#    #+#             */
+/*   Updated: 2023/11/13 04:07:06 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.hpp"
+#ifndef CHARACTER_HPP  
+#define CHARAACTER_HPP
 
-AMateria::AMateria(){}
+#include <string>
+#include <iostream>
+#include "ICharacter.hpp"
 
-AMateria::AMateria(std::string const& type):type(type){}
-
-std::string const& AMateria::getType() const{
-    return (this->type);
-}
-
-AMateria::AMateria(const AMateria& other){
-    *this = other;
-}
-
-AMateria& AMateria::operator=(const AMateria& other){
-    if (this != &other)
-        this->type = other.getType();
+class Character : public ICharacter
+{
+    public:
+        ~ICharacter() {}
+        std::string const & getName() const = 0;
+        void equip(AMateria* m) = 0;
+        void unequip(int idx) = 0;
+        void use(int idx, ICharacter& target);
     
-    return *this;
-}
+};
 
-AMateria::~AMateria(){}
+#endif

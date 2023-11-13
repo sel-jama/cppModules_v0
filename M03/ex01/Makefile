@@ -14,16 +14,18 @@ SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp
 
 OBJS = ${SRCS:.cpp=.o}
 
-CC = c++
+CXX = c++
 
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = Scav
 
+HEADERS = ScavTrap.hpp ClapTrap.hpp
+
 all : ${NAME}
 
-${NAME} : ${OBJS}
-	${CC} ${CPPFLAGS} ${OBJS} -o ${NAME}
+${NAME} : ${OBJS} ${HEADERS}
+	${CXX} ${CXXFLAGS} ${OBJS} -o ${NAME}
 
 clean :
 	rm -rf ${OBJS}

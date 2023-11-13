@@ -15,18 +15,27 @@
 
 int main()
 {
-    ScavTrap  child;
-    child.attack("scav");
+    ClapTrap *base = new ScavTrap("Derived");
+    base->attack("me");
+    delete base;
+
     
-    ScavTrap  name("robot");
-    name.attack("another");
+    ScavTrap  child1;
+    child1.attack("scav");
+    child1.takeDamage(50);
+    child1.beRepaired(100);
 
     std::cout << std::endl;
     FragTrap child2;
-    child2.attack("frag");
+    child2.setName("Child");
+    child2.attack("unknown");
     
+    std::cout << std::endl;
     FragTrap named("random");
     named.attack("Frag");
+    named.takeDamage(150);
+    named.attack("weak");
+
     std::cout << std::endl;
     return 0;
 }

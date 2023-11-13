@@ -15,12 +15,18 @@
 int main(){
     ClapTrap obj;
     
-    obj.setName("CLAP1");
-    obj.attack("CLAP2");
+    obj.setName("Anonymous");
+    obj.attack("CLAP");
     obj.takeDamage(3);
     obj.beRepaired(2);
 
+    std::cout << std::endl;
     ClapTrap obj1( obj );
     obj1.attack("another");
+
+    std::cout << std::endl;
+    ClapTrap obj2("Other");
+    obj2.takeDamage(20);
+    obj2.attack("CLAP2");
     return 0;
 }

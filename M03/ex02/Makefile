@@ -14,16 +14,16 @@ SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 
 OBJS = ${SRCS:.cpp=.o}
 
-CC = c++
+CXX = c++
 
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = Trap
+NAME = Frag
 
 all : ${NAME}
 
 ${NAME} : ${OBJS}
-	${CC} ${CPPFLAGS} ${OBJS} -o ${NAME}
+	${CXX} ${CXXFLAGS} ${OBJS} -o ${NAME}
 
 clean :
 	rm -rf ${OBJS}

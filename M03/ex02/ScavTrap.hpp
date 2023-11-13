@@ -20,8 +20,11 @@ class ScavTrap : public ClapTrap{
     public:
         ScavTrap();
         ScavTrap(const std::string Name);
-        void attack(const std::string& target); //override attack function
+        ScavTrap(const ScavTrap& other);
+        ScavTrap& operator=(const ScavTrap& other);
+        void attack(const std::string& target);
         ~ScavTrap();
+
         void guardGate();
 };
 

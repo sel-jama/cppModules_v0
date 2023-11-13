@@ -16,9 +16,23 @@ Cure::Cure(){
     type = "cure";
 }
 
+Cure::Cure(const Cure& other){
+    *this = other;
+}
+
+Cure& Cure::operator=(const Cure& other){
+    if (this != &other)
+        this->type = other.type;
+    return *this;
+}
+
 Cure::~Cure(){}
 
 void Cure::use(ICharacter& target){
     std::cout << "heals " << target.name << "'s wounds *"<< std::endl;
+}
+
+AMateria* Cure::clone() const{
+    return new Cure();
 }
 
