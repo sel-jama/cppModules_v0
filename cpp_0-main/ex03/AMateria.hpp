@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 05:27:21 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/11/10 05:53:42 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/11/14 20:33:17 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <string>
 #include <iostream>
+#include "ICharacter.hpp"
 
 class AMateria
 {

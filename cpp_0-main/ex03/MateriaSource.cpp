@@ -6,37 +6,40 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:31:58 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/11/13 12:31:59 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/11/14 21:20:13 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MateriaSource.hpp"
 
-MateriaSource::MateriaSource(void) : last(0)
+MateriaSource::MateriaSource()
 {
+	last = 0;
 	for (int i = 0; i < 4; i++)
-		this->materias[i] = NULL;
+		this->_MateriaSrc[i] = NULL;
 }
 
-MateriaSource::MateriaSource(const MateriaSource& other)
-{
-	*this = other; // Overloaded =
+MateriaSource::MateriaSource(const MateriaSource& other){
+	*this = other;
 }
 
-MateriaSource::~MateriaSource(void)
+MateriaSource::~MateriaSource()
 {
 	for (int i = 0; i < last; i++)
-		delete this->materias[i];
+		delete this->_MateriaSrc[i];
 }
 
 MateriaSource&		MateriaSource::operator=(const MateriaSource& other)
 {
+	if (this == &other)
+		return *this;
+	
 	this->last = other.last;
 	for (int i = 0; i < 4; i++)
 	{
-		if (this->materias[i])
-			delete this->materias[i];
-		this->materias[i] = other.materias[i];
+		// if (this->materias[i])
+		// 	delete this->materias[i];
+		this->_MateriaSrc[i] = other._MateriaSrc[i];
 	}
 	return (*this);
 }
@@ -44,20 +47,23 @@ MateriaSource&		MateriaSource::operator=(const MateriaSource& other)
 void				MateriaSource::learnMateria(AMateria *m)
 {
 	if (this->last >= 4)
-		std::cout << "Can't learn any more materias" << std::endl;
-	else
 	{
-		this->materias[last] = m;
-		last++;
+		std::cout << "The MateriaSource can't learn more Materias" << std::endl;
+		return ;
 	}
+	
+	this->_MateriaSrc[last] = m;
+	last++;
 }
 
 AMateria			*MateriaSource::createMateria(const std::string& type)
 {
-	for (int i = 0; i < 4 && this->materias[i]; i++)
+	int i = 0;
+	while( i < 4 && this->_MateriaSrc[i])
 	{
-		if (type == this->materias[i]->getType())
-			return this->materias[i]->clone();
+		if (type == this->_MateriaSrc[i]->getType())
+			return this->_MateriaSrc[i]->clone();
+		i++;
 	}
-	return NULL;
+	return 0;
 }
