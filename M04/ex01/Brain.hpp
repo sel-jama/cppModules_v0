@@ -20,6 +20,7 @@ class Brain
 {
     private:
         std::string ideas[100];
+        int LastIdea;
     public:
         Brain();
         ~Brain();

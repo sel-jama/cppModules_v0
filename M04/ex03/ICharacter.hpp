@@ -6,16 +6,18 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 06:01:51 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/11/10 06:42:26 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/11/14 21:18:33 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ICHARACTER_HPP  
-#define ICHARAACTER_HPP
+#define ICHARACTER_HPP
 
 #include <string>
 #include <iostream>
 #include "AMateria.hpp"
+
+class AMateria;
 
 class ICharacter
 {

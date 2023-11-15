@@ -13,9 +13,37 @@
 #include "Brain.hpp"
 
 Brain::Brain(){
+    LastIdea = 0;
     std::cout << "Brain Default Constructor Called" << std::endl;
+}
+
+Brain::Brain(const Brain& other){
+    std::cout << "Brain Copy Constructor Called" << std::endl;
+    *this = other;
+}
+
+Brain& Brain::operator=(const Brain& other){
+    if (this == &other)
+        return *this;
+    this->LastIdea = other->LastIdea;
+    for (int i = 0; i < 100; i++)
+        this->ideas[i] = other.ideas[i];
+    return *this;
 }
 
 Brain::~Brain(){
     std::cout << "Brain Destructor Called" << std::endl;
+}
+
+const std::string& Brain::getIdea(int i) const{
+    if (i < 0 || i > 100)
+        return (NULL);
+    return (this->ideas[i]);
+}
+
+void Brain::setIdea(const std::string idea){
+    if (this->LastIdea == 100)
+        return ;
+    this->ideas[i] = idea;
+    i++;
 }

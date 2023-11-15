@@ -13,17 +13,34 @@
 #include "Animal.hpp"
 
 Animal::Animal(){
-    std::cout << "Animal Default Constructor Called" << std::endl;
+	std::cout << "Animal Default Constructor Called" << std::endl;
+}
+
+Animal::Animal(const Animal& other){
+	std::cout << "Animal Copy Constructor Called" << std::endl;
+	*this = other; 
 }
 
 Animal::~Animal(){
-    std::cout << "Animal Destructor Called" << std::endl;
+	std::cout << "Animal Destructor Called" << std::endl;
 }
 
-void Animal::makeSound() const{
-    std::cout << "Animal sound" << std::endl;
+Animal& Animal::operator=(const Animal& other){
+    if (this != &other)
+	    this->type = other.getType();
+
+	return (*this);
 }
 
-const std::string Animal::getType(void) const{
-    return (this->type);
+const std::string&	Animal::getType() const{
+	return (this->type);
+}
+
+void  Animal::setType(const std::string& type){
+	this->type = type;
+}
+
+void    Animal::makeSound() const
+{
+	std::cout << " Animal Sound ..." << std::endl;
 }

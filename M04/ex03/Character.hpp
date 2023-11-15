@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 04:03:35 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/11/13 12:10:44 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/11/14 21:07:30 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,15 @@
 #include <string>
 #include <iostream>
 #include "ICharacter.hpp"
+#include "AMateria.hpp"
 
 class Character : public ICharacter
 {
     private:
         std::string _name;
         AMateria* _inventory[4];
+        int _last;
+        
     public:
         Character();
         Character(const std::string& name);
