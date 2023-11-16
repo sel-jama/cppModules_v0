@@ -6,12 +6,12 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 04:03:35 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/11/14 21:07:30 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/11/16 03:19:57 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHARACTER_HPP  
-#define CHARAACTER_HPP
+#define CHARACTER_HPP
 
 #include <string>
 #include <iostream>
@@ -23,6 +23,7 @@ class Character : public ICharacter
     private:
         std::string _name;
         AMateria* _inventory[4];
+        AMateria* saver[4];
         int _last;
         
     public:
@@ -32,7 +33,6 @@ class Character : public ICharacter
         Character& operator=(const Character& other); //deep copy
         ~Character();
         
-        // ~ICharacter() {}
         std::string const & getName() const;
         void equip(AMateria* m);
         void unequip(int idx);

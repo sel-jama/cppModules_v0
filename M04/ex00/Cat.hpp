@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:27:00 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/11/10 03:56:59 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/11/16 02:22:26 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@ class Cat: public Animal{
         Cat();
         Cat(const Cat& other);
         Cat& operator=(const Cat& other);
-        void makeSound() const;
         ~Cat();
+        void makeSound() const;
 };

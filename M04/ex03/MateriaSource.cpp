@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:31:58 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/11/14 21:20:13 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/11/15 21:34:56 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ MateriaSource&		MateriaSource::operator=(const MateriaSource& other)
 	this->last = other.last;
 	for (int i = 0; i < 4; i++)
 	{
-		// if (this->materias[i])
-		// 	delete this->materias[i];
+		if (this->_MateriaSrc[i])
+			delete this->_MateriaSrc[i];
 		this->_MateriaSrc[i] = other._MateriaSrc[i];
 	}
 	return (*this);

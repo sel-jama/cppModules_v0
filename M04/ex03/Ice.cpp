@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 05:57:46 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/11/10 05:59:13 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/11/16 03:03:40 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,12 @@
 Ice::Ice() : AMateria("ice"){
 }
 
-Ice::Ice(const Ice& other) : AMateria("ice"){
-    *this = other;
+Ice::Ice(const Ice& other) : AMateria(other.type){
+    (void)other;
 }
 
 Ice& Ice::operator=(const Ice& other){
-    if (this != &other)
-        this->type = other.type;
+    (void)other;
     return *this;
 }
 
@@ -30,7 +29,7 @@ void Ice::use(ICharacter& target){
 }
 
 AMateria* Ice::clone() const{
-    return new Ice();
+    return new Ice(*this);
 }
 
 Ice::~Ice(){}

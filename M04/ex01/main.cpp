@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:20:50 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/11/10 04:47:37 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/11/16 07:55:14 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,29 @@ int main()
     for (int i = arraySize / 2; i < arraySize; ++i) {
         animalArray[i] = new Cat();
     }
-
+    
+    // for (int i = 0; i < arraySize; ++i) {
+    //     //make sounds
+    // }
+    
     for (int i = 0; i < arraySize; ++i) {
         delete animalArray[i];
     }
     
-    const Animal* j =  new Dog();
-    const Animal* i = new Cat();
-    delete j;//should not create a leak
-    delete i;
+    //deep copy 
+    Cat obj;
+    obj.getBrain()->setIdea("Cat1");
+    
+    Cat obj1(obj);
+    obj1.getBrain()->setIdea("Cat2");
+
+    // std::cout << obj.getBrain()->getIdea(0) << std::endl;
+    // std::cout << obj1.getBrain()->getIdea(1) << std::endl;
+    
+    // const Animal* j =  new Dog();
+    // const Animal* i = new Cat();
+    // delete j;//should not create a leak
+    // delete i;ls
     
     return 0;
 }

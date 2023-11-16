@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 05:13:49 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/11/14 21:05:34 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/11/16 06:51:44 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,21 @@ Character::Character(){
     _last = 0;
     for (int i = 0; i < 4; i++)
         _inventory[i] = NULL;
+    
+    for (int i = 0; i < 4; i++)
+        saver[i] = NULL;
 }
 
-Character::Character(const std::string& name):_name(name){
+Character::Character(const std::string& name) : _name(name){
     _last = 0;
      for (int i = 0; i < 4; i++)
         _inventory[i] = NULL;
+    
+    for (int i = 0; i < 4; i++)
+        saver[i] = NULL;
 }
 
-Character::Character(const Character& other){
+Character::Character(const Character& other) : ICharacter(other){
     *this = other;
 }
 
@@ -32,13 +38,11 @@ Character& Character::operator=(const Character& other){
     if (this != &other)
     {
         this->_name = other._name;
-        this->_last = 0;
+        this->_last = other._last;
         for (int i = 0; i < 4; i++){
             if (this->_inventory[i])
                 delete this->_inventory[i];
             this->_inventory[i] = other._inventory[i];
-            if (other._inventory[i])
-			    this->_last++;
         }
     }
     return *this;
@@ -54,21 +58,30 @@ std::string const& Character::getName() const{
 }
 
 void Character::equip(AMateria* m){
+    int i;
+    for (i = 0; i < 4; i++){
+        if (!this->_inventory[i])
+            break ;
+    }
+    this->_last = i;
     if (this->_last >= 4)
         return ;
     this->_inventory[this->_last] = m;
     this->_last += 1;
+    // if (this->saver[i])
+    //     delete this->saver[i];
+    // this->_inventory[i] = m;
+    
 }
 
 void Character::unequip(int idx){
-    //memory leak here (losing address)
     if (idx < 0 || idx >= 4 || !_inventory[idx])
         return ;
-    for (int i = idx + 1; i < 4; i++)
-    {
-        this->_inventory[i - 1] = this->_inventory[i];
-    }
+    saver[idx] = _inventory[idx];
+    _inventory[idx] = NULL;
+    // this->_last--;
 }
+
 
 void Character::use(int idx, ICharacter& target){
     if (idx < 0 || idx >= 4 || !_inventory[idx])
