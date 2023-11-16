@@ -1,19 +1,19 @@
-SRCS = main.cpp Cat.cpp Dog.cpp Animal.cpp
+SRCS = main.cpp Cat.cpp Dog.cpp Animal.cpp WrongAnimal.cpp WrongCat.cpp
 
 OBJS = ${SRCS:.cpp=.o}
 
-CC = c++
+CXX = c++
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-HEADERS = Animal.hpp Cat.hpp Dog.hpp
+HEADERS = Animal.hpp Cat.hpp Dog.hpp WrongAnimal.hpp WrongCat.hpp
 
 NAME = Animal
 
 all : ${NAME}
 
 ${NAME} : ${OBJS} ${HEADERS}
-	${CC} ${CPPFLAGS} ${OBJS} -o ${NAME}
+	${CXX} ${CPPFLAGS} ${OBJS} -o ${NAME}
 
 clean :
 	rm -rf ${OBJS}
