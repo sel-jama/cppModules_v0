@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 05:32:05 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/11/16 02:58:22 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/11/17 10:25:34 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ AMateria::AMateria(){}
 AMateria::AMateria(std::string const& type) : type(type){}
 
 
-AMateria::AMateria(const AMateria& other) : type(other.type){
+AMateria::AMateria(const AMateria& other): type(other.type){
     (void)other;
 }
 
@@ -30,4 +30,8 @@ AMateria::~AMateria(){}
 
 std::string const& AMateria::getType() const{
     return (this->type);
+}
+
+void AMateria::use(ICharacter& target){
+    std::cout << "Materia of " << target.getName() << std::endl;
 }

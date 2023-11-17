@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 04:03:35 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/11/16 03:19:57 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/11/17 07:30:19 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ class Character : public ICharacter
         void equip(AMateria* m);
         void unequip(int idx);
         void use(int idx, ICharacter& target);
-    
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:24:12 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/11/16 07:00:42 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/11/17 01:20:17 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ Animal::~Animal(){
 }
 
 Animal& Animal::operator=(const Animal& other){
+	std::cout << "Animal Copy assignment operator Called" << std::endl;
     if (this != &other)
 	    this->type = other.getType();
 	return (*this);

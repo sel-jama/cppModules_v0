@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 05:52:15 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/11/16 03:03:54 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/11/17 06:31:09 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ Cure::Cure() : AMateria("cure"){
 }
 
 Cure::Cure(const Cure& other) : AMateria(other.type){
-    // *this = other;
     (void)other;
 }
 

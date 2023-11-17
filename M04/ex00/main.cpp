@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:20:50 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/11/16 23:10:49 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/11/17 09:55:37 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,18 @@ int main()
     delete meta;
 
     //wrong Animal
-     const WrongAnimal* meta = new WrongAnimal();
-    const WrongAnimal* i = new WrongCat();
-    std::cout << i->getType() << " " << std::endl;
-    i->makeSound(); //will output the animal sound!
-    meta->makeSound();
+    std::cout << std::endl;
+    const WrongAnimal* Wrongmeta = new WrongAnimal();
+    const WrongAnimal* Wrongi = new WrongCat();
+    const WrongCat cat;
+    
+    std::cout << Wrongi->getType() << " " << std::endl;
+    Wrongi->makeSound(); //will output the wrong animal sound!
+    Wrongmeta->makeSound();
+    cat.makeSound();
 
-    delete i;
-    delete j;
-    delete meta;
-    
-    
+    delete Wrongi;
+    delete Wrongmeta;
+     
     return 0;
 }

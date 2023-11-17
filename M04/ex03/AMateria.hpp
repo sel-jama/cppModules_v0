@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 05:27:21 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/11/16 02:52:28 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/11/17 10:03:05 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class AMateria
         std::string const & getType() const; //Returns the materia type
         
         virtual AMateria* clone() const = 0;
-        virtual void use(ICharacter& target) = 0;
+        virtual void use(ICharacter& target);
 };
 
 #endif

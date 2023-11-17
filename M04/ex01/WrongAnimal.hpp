@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 03:27:00 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/11/17 00:39:53 by sel-jama         ###   ########.fr       */
+/*   Created: 2023/11/16 22:38:43 by sel-jama          #+#    #+#             */
+/*   Updated: 2023/11/16 22:45:49 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-#define CAT_HPP
+#ifndef WRONGANIMAL_HPP
+#define WRONGANIMAL_HPP
 
-#include "Animal.hpp"
-#include "Brain.hpp"
+#include <string>
+#include <iostream>
 
-class Cat : public Animal{
-    private:
-        Brain* brain;
-    
+class WrongAnimal{
+    protected:
+        std::string type;
+        
     public:
-        Cat();
-        Cat(const Cat& other);
-        Cat& operator=(const Cat& other);
-        ~Cat();
-
-        Brain* getBrain();
+        WrongAnimal();
+        WrongAnimal(const WrongAnimal& other);
+        WrongAnimal& operator=(const WrongAnimal& other);
+        ~WrongAnimal();
+        
+        //setter and getter
+        const std::string& getType(void) const;
+        void setType(const std::string& type);
+        
         void makeSound() const;
 };
 

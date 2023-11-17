@@ -4,7 +4,7 @@ OBJS = ${SRCS:.cpp=.o}
 
 CXX = c++
 
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98
+CPPFLAGS = -Wall -Wextra -Werror
 
 HEADERS = Animal.hpp Cat.hpp Dog.hpp WrongAnimal.hpp WrongCat.hpp
 

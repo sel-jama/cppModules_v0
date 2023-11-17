@@ -6,16 +6,13 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 04:11:07 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/11/16 07:53:43 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/11/17 01:21:20 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Brain.hpp"
 
 Brain::Brain(){
-    LastIdea = 0;
-    for (int i = 0; i < 100; i++)
-        this->ideas[i] = nullptr;
     std::cout << "Brain Default Constructor Called" << std::endl;
 }
 
@@ -25,9 +22,9 @@ Brain::Brain(const Brain& other){
 }
 
 Brain& Brain::operator=(const Brain& other){
+    std::cout << "Brain Copy assignment operator Called" << std::endl;
     if (this == &other)
         return *this;
-    this->LastIdea = other.LastIdea;
     for (int i = 0; i < 100; i++)
         this->ideas[i] = other.ideas[i];
     return *this;
@@ -37,16 +34,16 @@ Brain::~Brain(){
     std::cout << "Brain Destructor Called" << std::endl;
 }
 
-std::string Brain::getIdea(int i){
-    if (i >= 0 && i <= this->LastIdea){
-        return (this->ideas[i]);
+const std::string& Brain::getIdea(int idx) const{
+    if (idx < 0 || idx > 100){
+        static const std::string null = "Out of bounds";
+        return null;
     }
-    return (NULL);
+   return (this->ideas[idx]);
 }
 
-void Brain::setIdea(const std::string idea) {
-    if (this->LastIdea == 100)
+void Brain::setIdea(int idx, const std::string idea) {
+    if (idx < 0 || idx > 100)
         return ;
-    this->ideas[LastIdea] = idea;
-    LastIdea++;
+    this->ideas[idx] = idea;
 }

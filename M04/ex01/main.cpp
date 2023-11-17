@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:20:50 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/11/16 07:55:14 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/11/17 01:40:53 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,28 +28,29 @@ int main()
         animalArray[i] = new Cat();
     }
     
-    // for (int i = 0; i < arraySize; ++i) {
-    //     //make sounds
-    // }
+    for (int i = 0; i < arraySize; ++i) {
+        animalArray[i]->makeSound();
+    }
     
     for (int i = 0; i < arraySize; ++i) {
         delete animalArray[i];
     }
     
     //deep copy 
+    std::cout << std::endl;
     Cat obj;
-    obj.getBrain()->setIdea("Cat1");
+    obj.getBrain()->setIdea(0, "Cat1: I want foood");
     
     Cat obj1(obj);
-    obj1.getBrain()->setIdea("Cat2");
+    obj1.getBrain()->setIdea(0, "Cat2: Nap time zZ");
 
-    // std::cout << obj.getBrain()->getIdea(0) << std::endl;
-    // std::cout << obj1.getBrain()->getIdea(1) << std::endl;
+    std::cout << obj.getBrain()->getIdea(0) << std::endl;
+    std::cout << obj1.getBrain()->getIdea(0) << std::endl;
     
     // const Animal* j =  new Dog();
     // const Animal* i = new Cat();
     // delete j;//should not create a leak
-    // delete i;ls
+    // delete i;
     
     return 0;
 }

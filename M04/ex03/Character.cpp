@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 05:13:49 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/11/16 06:51:44 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/11/17 07:33:39 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,30 @@ Character::Character(const Character& other) : ICharacter(other){
 }
 
 Character& Character::operator=(const Character& other){
+    std::cout << "yeees" << std::endl;
     if (this != &other)
     {
         this->_name = other._name;
         this->_last = other._last;
         for (int i = 0; i < 4; i++){
-            if (this->_inventory[i])
+            if (this->_inventory[i] != NULL)
                 delete this->_inventory[i];
-            this->_inventory[i] = other._inventory[i];
+            if (other._inventory[i])
+                this->_inventory[i] = other._inventory[i]->clone();
+            else
+                this->_inventory[i] = NULL;
+            this->saver[i] = other.saver[i];
         }
     }
     return *this;
 }
 
 Character::~Character(){
-    for (int i = 0; i < 4 && _inventory[i]; i++)
-        delete this->_inventory[i];
+    for (int i = 0; i < 4 ; i++)
+    {
+        if (this->_inventory[i])
+            delete this->_inventory[i];
+    }
 }
 
 std::string const& Character::getName() const{
@@ -68,9 +76,8 @@ void Character::equip(AMateria* m){
         return ;
     this->_inventory[this->_last] = m;
     this->_last += 1;
-    // if (this->saver[i])
-    //     delete this->saver[i];
-    // this->_inventory[i] = m;
+    if (this->saver[i])
+        delete this->saver[i];
     
 }
 

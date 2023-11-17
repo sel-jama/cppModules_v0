@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 04:11:17 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/11/16 07:39:07 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/11/17 00:51:52 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ class Brain
 {
     private:
         std::string ideas[100];
-        int LastIdea;
         
     public:
         Brain();
@@ -28,8 +27,8 @@ class Brain
         Brain& operator=(const Brain& other);
         ~Brain();
         
-        std::string getIdea(int i);
-        void setIdea(const std::string idea);
+        const std::string& getIdea(int idx) const ;
+        void setIdea(int idx, const std::string idea);
 };
 
 #endif
