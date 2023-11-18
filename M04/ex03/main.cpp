@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 05:04:46 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/11/17 07:46:01 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/11/18 13:54:33 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 #include "Ice.hpp"
 #include "Cure.hpp"
 
-int main()
-{
+void test(){
     IMateriaSource* src = new MateriaSource();
     src->learnMateria(new Ice());
     src->learnMateria(new Cure());
@@ -34,10 +33,11 @@ int main()
     me->use(1, *bob);
     
 
-    //additional tests
+    // additional tests
+    
     ICharacter* other = new Character("other");
     other->unequip(0);
-    other->unequip(10);
+    other->unequip(100);
     
     //Create and equip more Materias
     AMateria* m;
@@ -67,17 +67,12 @@ int main()
     delete bob;
     delete me;
     delete src;
+}
 
-
-    // std::cout << "Deep copy tests" << std::endl;
-    // Character* original = new Character("Original");
-    // ICharacter* copy = new Character(*original);
-    // copy->equip(m);
-    // copy->use(0, *original);
-
+int main()
+{
+    test();
+    // system("leaks recap");
    
-    // Character* another = new Character("Another");
-    // *another = *original;
-    // another->use(0, *original);
     return 0;
 }

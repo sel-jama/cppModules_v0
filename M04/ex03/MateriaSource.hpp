@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:32:53 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/11/14 20:28:42 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/11/18 08:13:44 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ class MateriaSource : public IMateriaSource{
     public:
         MateriaSource();
         MateriaSource(const MateriaSource& other);
-		~MateriaSource();
 		MateriaSource		&operator=(const MateriaSource& other);
+		~MateriaSource();
+        
         void learnMateria(AMateria*);
         AMateria* createMateria(std::string const & type);
 };

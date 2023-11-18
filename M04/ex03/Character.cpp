@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 05:13:49 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/11/17 07:33:39 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/11/18 13:38:42 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ Character::Character(const Character& other) : ICharacter(other){
 }
 
 Character& Character::operator=(const Character& other){
-    std::cout << "yeees" << std::endl;
+    std::cout << "assignment operator invoked" << std::endl;
     if (this != &other)
     {
         this->_name = other._name;
@@ -57,7 +57,15 @@ Character::~Character(){
     for (int i = 0; i < 4 ; i++)
     {
         if (this->_inventory[i])
+        {
             delete this->_inventory[i];
+            this->_inventory[i] = NULL;
+        }
+        if (this->saver[i])
+        {
+            delete this->saver[i];
+            this->saver[i] = NULL;
+        }
     }
 }
 
@@ -67,17 +75,28 @@ std::string const& Character::getName() const{
 
 void Character::equip(AMateria* m){
     int i;
+    if (m){
+        for (i = 0; i < 4; i++){
+            if (m == this->_inventory[i])
+                return ;
+        }
+    }
     for (i = 0; i < 4; i++){
         if (!this->_inventory[i])
             break ;
     }
     this->_last = i;
     if (this->_last >= 4)
+    {
+        delete m;
         return ;
+    }
     this->_inventory[this->_last] = m;
-    this->_last += 1;
     if (this->saver[i])
+    {
         delete this->saver[i];
+        this->saver[i] = NULL;
+    }
     
 }
 
@@ -86,9 +105,7 @@ void Character::unequip(int idx){
         return ;
     saver[idx] = _inventory[idx];
     _inventory[idx] = NULL;
-    // this->_last--;
 }
-
 
 void Character::use(int idx, ICharacter& target){
     if (idx < 0 || idx >= 4 || !_inventory[idx])

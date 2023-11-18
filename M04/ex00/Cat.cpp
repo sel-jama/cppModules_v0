@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:40:45 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/11/17 09:32:58 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/11/18 06:53:43 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ Cat::Cat(const Cat& other) : Animal(other){
 }
 
 Cat& Cat::operator=(const Cat& other){
-    this->type = other.type;
     std::cout << "Cat Copy assignment operator called" << std::endl;
+    this->type = other.type;
     return (*this);
 }
 

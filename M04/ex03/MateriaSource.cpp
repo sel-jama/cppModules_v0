@@ -6,7 +6,7 @@
 /*   By: sel-jama <sel-jama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:31:58 by sel-jama          #+#    #+#             */
-/*   Updated: 2023/11/15 21:34:56 by sel-jama         ###   ########.fr       */
+/*   Updated: 2023/11/18 13:02:19 by sel-jama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,14 @@ MateriaSource::MateriaSource(const MateriaSource& other){
 
 MateriaSource::~MateriaSource()
 {
-	for (int i = 0; i < last; i++)
-		delete this->_MateriaSrc[i];
+	for (int i = 0; i < 4; i++)
+	{
+		if (this->_MateriaSrc[i])
+		{
+			delete this->_MateriaSrc[i];
+			this->_MateriaSrc[i] = NULL;
+		}
+	}
 }
 
 MateriaSource&		MateriaSource::operator=(const MateriaSource& other)
@@ -39,7 +45,10 @@ MateriaSource&		MateriaSource::operator=(const MateriaSource& other)
 	{
 		if (this->_MateriaSrc[i])
 			delete this->_MateriaSrc[i];
-		this->_MateriaSrc[i] = other._MateriaSrc[i];
+		if (other._MateriaSrc[i])
+			this->_MateriaSrc[i] = other._MateriaSrc[i]->clone();
+		else
+			this->_MateriaSrc[i] = NULL;
 	}
 	return (*this);
 }
@@ -49,6 +58,7 @@ void				MateriaSource::learnMateria(AMateria *m)
 	if (this->last >= 4)
 	{
 		std::cout << "The MateriaSource can't learn more Materias" << std::endl;
+		delete m;
 		return ;
 	}
 	
